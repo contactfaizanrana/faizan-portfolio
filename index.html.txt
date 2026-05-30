@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faizan Rana | Technical Solutions Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed selection:bg-blue-200">
+
+    <header class="max-w-4xl mx-auto px-6 py-24">
+        <h1 class="text-5xl font-extrabold tracking-tight mb-4">Faizan Rana</h1>
+        <h2 class="text-2xl text-gray-600 mb-8">Digital Infrastructure & AI Systems Consultant</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mb-8">
+            I engineer secure, high-converting digital infrastructure for modern brands. From custom Shopify deployments to AI agent integrations, I build systems that scale effortlessly.
+        </p>
+        <a href="YOUR_CALENDLY_LINK_HERE" class="bg-[#2563EB] text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition">Book a 15-Min Strategy Call</a>
+    </header>
+
+    <hr class="border-gray-200 max-w-4xl mx-auto">
+
+    <section class="max-w-4xl mx-auto px-6 py-20">
+        <h3 class="text-3xl font-bold mb-10">Current Deployments & Case Studies</h3>
+        <div class="space-y-12">
+            
+            <div>
+                <h4 class="font-bold text-xl mb-2">01. labb.care | E-Commerce Architecture</h4>
+                <p class="text-gray-600 mb-2">End-to-end digital marketing and Shopify deployment for a modern lip care brand. Executed brand identity, typography, and integrated AI-driven copywriting systems.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-xl mb-2">02. Readymadeclaw (handleclaw.com) | AI SaaS</h4>
+                <p class="text-gray-600 mb-2">Architected a one-click SaaS platform for AI agent setup. Managed cloud hosting deployments and integrated n8n for seamless backend business automation.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-xl mb-2">03. SafeStride Solutions | Hardware/Software Integration</h4>
+                <p class="text-gray-600 mb-2">Developed branding, value proposition design, and technical layout strategy for an automated retractable wire management system.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="border-gray-200 max-w-4xl mx-auto">
+
+    <section class="bg-[#111827] text-white py-20 mt-10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-6">Let's Build Your Infrastructure</h3>
+            <p class="text-gray-400 mb-8">Operating globally. Book a technical discovery call below.</p>
+            <a href="YOUR_CALENDLY_LINK_HERE" class="bg-white text-black px-8 py-4 rounded-md font-bold text-lg hover:bg-gray-200 transition">Open Calendly</a>
+            <p class="mt-8 text-sm text-gray-500">contact.faizanrana@gmail.com</p>
+        </div>
+    </section>
+
+</body>
+</html>
