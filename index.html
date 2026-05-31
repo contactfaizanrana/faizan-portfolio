@@ -26,12 +26,10 @@
 
         .glass-panel:hover {
             background: rgba(22, 22, 22, 0.8);
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
-        /* HandleClaw Red Accents */
         .red-badge {
             background: rgba(225, 29, 72, 0.1);
             color: #f43f5e;
@@ -51,11 +49,27 @@
             transform: translateY(-1px);
         }
 
+        /* Continuous Marquee Animation */
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .marquee-container {
+            display: flex;
+            width: max-content;
+        }
+        .marquee-left { animation: scroll-left 40s linear infinite; }
+        .marquee-right { animation: scroll-right 40s linear infinite; }
+        .marquee-wrapper:hover .marquee-container { animation-play-state: paused; }
+
         /* Custom Animations */
         @keyframes float {
-            0% { transform: translateY(0px) scale(1); }
+            0%, 100% { transform: translateY(0px) scale(1); }
             50% { transform: translateY(-20px) scale(1.05); }
-            100% { transform: translateY(0px) scale(1); }
         }
 
         .glow-bg {
@@ -69,34 +83,16 @@
             animation: float 15s ease-in-out infinite;
         }
 
-        .glow-bg-blue {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, rgba(0,0,0,0) 60%);
-            z-index: -1;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 18s ease-in-out infinite reverse;
-        }
-
         /* FAQ Accordion Styling */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
 <body class="antialiased selection:bg-red-500/30 selection:text-white relative">
 
-    <!-- Ambient Backgrounds -->
     <div class="glow-bg top-[-10%] left-[20%]"></div>
-    <div class="glow-bg-blue top-[40%] right-[-10%]"></div>
-    <div class="glow-bg bottom-[-5%] left-[-10%]"></div>
+    <div class="glow-bg bottom-[20%] right-[-10%]"></div>
 
-    <!-- Sticky Navigation -->
     <nav class="fixed w-full z-50 bg-[#030303]/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <a href="#" class="text-2xl font-extrabold tracking-tighter text-white flex items-center gap-2">
@@ -104,153 +100,122 @@
                 FR.
             </a>
             
-            <div class="hidden md:flex items-center gap-10 text-sm font-medium text-gray-400">
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-400">
                 <a href="#services" class="hover:text-white transition">Services</a>
-                <a href="#process" class="hover:text-white transition">Solutions</a>
-                <a href="#pricing" class="hover:text-white transition">Pricing</a>
+                <a href="#process" class="hover:text-white transition">Process</a>
+                <a href="#portfolio" class="hover:text-white transition">Ecosystem</a>
+                <a href="#wall-of-love" class="hover:text-white transition">Testimonials</a>
                 <a href="#faq" class="hover:text-white transition">FAQ</a>
             </div>
 
             <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="btn-primary px-6 py-2.5 rounded-md text-sm font-bold shadow-lg">
-                Book a Call ($50)
+                Claim Free Audit
             </a>
         </div>
     </nav>
 
-    <!-- 1. Hero Section -->
     <main class="relative pt-52 pb-32 px-6 flex flex-col items-center text-center z-10">
         <div class="max-w-5xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-semibold tracking-wide uppercase mb-8">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                Operating US/UK Business Hours (9 PM - 6 AM PKT)
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-semibold tracking-wide uppercase mb-8 shadow-lg backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                Operating US/UK Business Hours
             </div>
             
-            <h1 class="text-6xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-[1.05]">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-[1.05]">
                 Infrastructure For <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-300">Digital Scale.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-red-600">Digital Scale.</span>
             </h1>
             
-            <p class="text-lg lg:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-                Combining 5 years of battle-tested digital marketing expertise with modern web development, Shopify architecture, and AI integrations to build high-converting growth engines.
+            <p class="text-lg lg:text-xl text-gray-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                I engineer secure, high-converting digital infrastructure. Combining 5 years of battle-tested marketing expertise with custom web development and Shopify architecture to drive measurable revenue.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
                 <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="btn-primary w-full sm:w-auto px-8 py-4 rounded-md text-base font-bold inline-flex items-center justify-center gap-2">
-                    Initialize Project
+                    Book Free Strategy Call
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
-                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 glass-panel text-white font-semibold rounded-md hover:bg-white/5 transition-all duration-300">
-                    View Ecosystem
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 glass-panel text-white font-semibold rounded-md hover:bg-white/5 transition-all duration-300">
+                    Explore Architecture
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- 2. Services: We Handle The Hard Parts -->
     <section id="services" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
         <div class="max-w-7xl mx-auto text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                Why Teams Hire Me
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Core Capabilities
             </div>
             <h2 class="text-4xl md:text-5xl font-bold mb-16">I Handle The Hard Parts</h2>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-                <!-- Card 1 -->
-                <div class="glass-panel p-8 group">
-                    <div class="w-12 h-12 rounded-lg bg-[#1a1025] flex items-center justify-center border border-[#3b1f5c] mb-6 text-purple-500 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div class="glass-panel p-8">
+                    <div class="w-12 h-12 rounded-lg bg-[#1a1025] flex items-center justify-center border border-[#3b1f5c] mb-6 text-purple-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Custom Integrations</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">I wire up bespoke marketing funnels and web tools so your digital assets drive real conversions from day one.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">I wire up bespoke marketing funnels and custom backend tools so your digital assets communicate flawlessly.</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="glass-panel p-8 group">
-                    <div class="w-12 h-12 rounded-lg bg-[#0f172a] flex items-center justify-center border border-[#1e3a8a] mb-6 text-blue-500 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                <div class="glass-panel p-8">
+                    <div class="w-12 h-12 rounded-lg bg-[#0f172a] flex items-center justify-center border border-[#1e3a8a] mb-6 text-blue-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Traffic Generation</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Leveraging 5 years of deep expertise to optimize ad campaigns, manage spend, and monitor your traffic workflows quietly.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Leveraging 5 years of deep expertise to optimize ad campaigns, manage spend, and scale inbound traffic.</p>
                 </div>
-                <!-- Card 3 -->
-                <div class="glass-panel p-8 group">
-                    <div class="w-12 h-12 rounded-lg bg-[#064e3b]/30 flex items-center justify-center border border-[#065f46] mb-6 text-emerald-500 group-hover:scale-110 transition-transform duration-300">
+                <div class="glass-panel p-8">
+                    <div class="w-12 h-12 rounded-lg bg-[#064e3b]/30 flex items-center justify-center border border-[#065f46] mb-6 text-emerald-500">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Shopify Architecture</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Building custom HTML/Tailwind CSS storefronts designed specifically to catch traffic and maximize average order value.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Building lightning-fast HTML/Tailwind CSS storefronts designed to catch traffic and maximize average order value.</p>
                 </div>
-                <!-- Card 4 -->
-                <div class="glass-panel p-8 group">
-                    <div class="w-12 h-12 rounded-lg bg-[#451a03]/50 flex items-center justify-center border border-[#78350f] mb-6 text-amber-500 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <div class="glass-panel p-8">
+                    <div class="w-12 h-12 rounded-lg bg-[#451a03]/50 flex items-center justify-center border border-[#78350f] mb-6 text-amber-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Done-for-you Setup</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">I handle the entire setup securely. You assign the bottleneck at the end of your day, and I build it while you sleep.</p>
+                    <h3 class="text-xl font-bold mb-3">Overnight Setup</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">You assign the technical bottleneck at the end of your workday, and I build the solution while you sleep.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Process: Go Live in 3 Simple Steps -->
     <section id="process" class="py-24 px-6 relative z-10 border-t border-white/5">
         <div class="max-w-6xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                Easy Setup
-            </div>
             <h2 class="text-4xl md:text-5xl font-bold mb-20">Deploy in 3 Simple Steps</h2>
-
             <div class="grid md:grid-cols-3 gap-12 relative">
-                <!-- Connecting Line for desktop -->
                 <div class="hidden md:block absolute top-[36px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-red-900/50 via-red-500/50 to-red-900/50 z-0"></div>
-
-                <!-- Step 1 -->
                 <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-2xl bg-black border border-red-500/30 flex items-center justify-center text-red-500 font-bold text-xl mb-6 shadow-[0_0_15px_rgba(225,29,72,0.2)]">01</div>
-                    <h3 class="text-xl font-bold mb-4">Strategic Kickoff Call</h3>
-                    <p class="text-sm text-gray-400 max-w-xs text-center">We learn your goals and map out your required infrastructure (Shopify, Web, Ads). You tell us what revenue targets you want to hit.</p>
+                    <div class="w-16 h-16 rounded-2xl bg-black border border-red-500/30 flex items-center justify-center text-red-500 font-bold text-xl mb-6">01</div>
+                    <h3 class="text-xl font-bold mb-4">Strategic Kickoff</h3>
+                    <p class="text-sm text-gray-400 max-w-xs text-center">We map out your required infrastructure and establish strict revenue and timeline targets.</p>
                 </div>
-
-                <!-- Step 2 -->
                 <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-2xl bg-black border border-red-500/30 flex items-center justify-center text-red-500 font-bold text-xl mb-6 shadow-[0_0_15px_rgba(225,29,72,0.2)]">02</div>
+                    <div class="w-16 h-16 rounded-2xl bg-black border border-red-500/30 flex items-center justify-center text-red-500 font-bold text-xl mb-6">02</div>
                     <h3 class="text-xl font-bold mb-4">Overnight Deployment</h3>
-                    <p class="text-sm text-gray-400 max-w-xs text-center">I utilize my US/UK offset hours to install your tracking pixels, set up secure hosting, and build the initial web architecture overnight.</p>
+                    <p class="text-sm text-gray-400 max-w-xs text-center">I utilize offset hours to install tracking, secure hosting, and build the initial architecture overnight.</p>
                 </div>
-
-                <!-- Step 3 -->
                 <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-2xl bg-black border border-red-500/30 flex items-center justify-center text-red-500 font-bold text-xl mb-6 shadow-[0_0_15px_rgba(225,29,72,0.2)]">03</div>
-                    <h3 class="text-xl font-bold mb-4">14 Days of Fine-Tuning</h3>
-                    <p class="text-sm text-gray-400 max-w-xs text-center">I actively monitor your traffic workflows, solve conversion edge cases, and provide direct support until you fully trust the system.</p>
+                    <div class="w-16 h-16 rounded-2xl bg-black border border-red-500/30 flex items-center justify-center text-red-500 font-bold text-xl mb-6">03</div>
+                    <h3 class="text-xl font-bold mb-4">14-Day Fine-Tuning</h3>
+                    <p class="text-sm text-gray-400 max-w-xs text-center">I actively monitor workflows, solve conversion edge cases, and hand over a fully scaled system.</p>
                 </div>
-            </div>
-            
-            <div class="mt-16">
-                <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="text-red-500 font-bold hover:text-red-400 transition inline-flex items-center gap-2">
-                    Schedule Your Kickoff Call <span class="text-xl">→</span>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- 4. Ecosystem & Entrepreneurship -->
     <section id="portfolio" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16 md:flex justify-between items-end">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        Founder Testing Grounds
-                    </div>
                     <h2 class="text-4xl md:text-5xl font-bold mb-4">Built By A Builder.</h2>
-                    <p class="text-gray-400 max-w-2xl">I don't just consult; I launch. I use my own brands to test complex supply chains, digital marketing funnels, and Shopify architectures before deploying them for clients.</p>
+                    <p class="text-gray-400 max-w-2xl">I use my own brands to battle-test complex supply chains, digital marketing funnels, and web architectures before deploying them for clients.</p>
                 </div>
             </div>
-
             <div class="grid lg:grid-cols-3 gap-6">
-                <!-- Active Project -->
                 <div class="glass-panel p-8 lg:col-span-2 border-red-500/30 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="flex justify-between items-start mb-6">
@@ -259,286 +224,292 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Launch Phase
                         </div>
                     </div>
-                    <p class="text-gray-400 max-w-xl leading-relaxed mb-6">A modern, digital-first lip care brand. Serving as my primary architecture testbed for end-to-end custom Shopify development, bespoke graphic/video design, and advanced digital marketing ad deployment.</p>
+                    <p class="text-gray-400 max-w-xl leading-relaxed mb-6">A modern, digital-first lip care brand. Serving as my primary architecture testbed for end-to-end custom Shopify development and advanced digital marketing ad deployment.</p>
                 </div>
-
-                <!-- Past Ventures -->
                 <div class="grid grid-rows-2 gap-6">
                     <div class="glass-panel p-6 flex flex-col justify-center">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-lg font-bold text-gray-300">AWARA</h3>
                             <span class="text-[9px] font-bold text-gray-500 uppercase tracking-wider bg-white/5 px-2 py-1 rounded">Closed</span>
                         </div>
-                        <p class="text-gray-500 text-xs leading-relaxed">Clothing brand venture. Provided critical early-stage lessons in brand positioning failures and iterative market strategy.</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Clothing brand venture. Provided critical early-stage lessons in brand positioning and market strategy.</p>
                     </div>
-
                     <div class="glass-panel p-6 flex flex-col justify-center">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-lg font-bold text-gray-300">Soledrop.co</h3>
                             <span class="text-[9px] font-bold text-gray-500 uppercase tracking-wider bg-white/5 px-2 py-1 rounded">Closed</span>
                         </div>
-                        <p class="text-gray-500 text-xs leading-relaxed">Sneaker manufacturing startup. Extracted high-level experience regarding physical supply chain bottlenecks.</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Sneaker manufacturing startup. Extracted high-level experience regarding physical supply chains.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Security Section -->
-    <section class="py-24 px-6 relative z-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                Security-First
+    <section id="wall-of-love" class="py-24 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Built for Builders</h2>
+            <p class="text-gray-400">Trusted by modern brands to scale infrastructure.</p>
+        </div>
+
+        <div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6">
+            <div class="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-20 pointer-events-none"></div>
+            <div class="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-20 pointer-events-none"></div>
+
+            <div class="marquee-container marquee-left gap-6">
+                <div class="flex gap-6">
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">CC</div>
+                            <div><h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4><p class="text-xs text-red-500">@canadacloud</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0 border-red-500/30">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-red-900 flex items-center justify-center font-bold text-sm">DE</div>
+                            <div><h4 class="font-bold text-white text-sm">Dastak Essentials</h4><p class="text-xs text-red-500">@dastakessentials</p></div>
+                        </div>
+                        <p class="text-sm text-gray-300">"The combination of targeted traffic wired directly into a high-converting backend completely changed our workflow. Incredible ROI."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">GB</div>
+                            <div><h4 class="font-bold text-white text-sm">Go Boom Up Agency</h4><p class="text-xs text-red-500">@goboomup</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Assigning bottlenecks at the end of our day and waking up to finished deployments is a massive operational advantage."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">XH</div>
+                            <div><h4 class="font-bold text-white text-sm">Xperts Hive</h4><p class="text-xs text-red-500">@xpertshive</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"A true 'done-for-you' service. We handed over the digital marketing reins, and the scaling happened exactly as mapped out. Zero IT headaches."</p>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">CC</div>
+                            <div><h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4><p class="text-xs text-red-500">@canadacloud</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0 border-red-500/30">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-red-900 flex items-center justify-center font-bold text-sm">DE</div>
+                            <div><h4 class="font-bold text-white text-sm">Dastak Essentials</h4><p class="text-xs text-red-500">@dastakessentials</p></div>
+                        </div>
+                        <p class="text-sm text-gray-300">"The combination of targeted traffic wired directly into a high-converting backend completely changed our workflow. Incredible ROI."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">GB</div>
+                            <div><h4 class="font-bold text-white text-sm">Go Boom Up Agency</h4><p class="text-xs text-red-500">@goboomup</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Assigning bottlenecks at the end of our day and waking up to finished deployments is a massive operational advantage."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">XH</div>
+                            <div><h4 class="font-bold text-white text-sm">Xperts Hive</h4><p class="text-xs text-red-500">@xpertshive</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"A true 'done-for-you' service. We handed over the digital marketing reins, and the scaling happened exactly as mapped out. Zero IT headaches."</p>
+                    </div>
+                </div>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-16">Enterprise-Grade Security by Design</h2>
 
-            <div class="grid md:grid-cols-3 gap-6 text-center">
-                <!-- Card 1 -->
-                <div class="glass-panel p-10 flex flex-col items-center group">
-                    <div class="w-12 h-12 rounded-lg bg-[#451a03]/50 flex items-center justify-center border border-[#78350f] mb-6 text-amber-500">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <div class="marquee-container marquee-right gap-6">
+                <div class="flex gap-6">
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">FH</div>
+                            <div><h4 class="font-bold text-white text-sm">Floret Herbal</h4><p class="text-xs text-red-500">@floretherbal</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched."</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Separated Access</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-8">We never handle raw passwords unnecessarily. Authentication is managed cleanly, giving you a full audit trail and instant revocation power.</p>
-                    <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="text-red-500 text-sm font-bold uppercase tracking-wider group-hover:text-red-400 transition flex items-center gap-2 mt-auto">Explore Service <span class="text-lg">→</span></a>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">ZU</div>
+                            <div><h4 class="font-bold text-white text-sm">Zeeshan Usmani</h4><p class="text-xs text-red-500">@zeeshanusmani</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Brilliant technical execution. Bridging the gap between raw marketing traffic generation and the actual backend infrastructure is rare."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">HP</div>
+                            <div><h4 class="font-bold text-white text-sm">Healthy Planet</h4><p class="text-xs text-red-500">@healthyplanet</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Our Shopify architecture needed a massive overhaul. The execution was flawless, secure, and resulted in an immediate conversion lift."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">MB</div>
+                            <div><h4 class="font-bold text-white text-sm">Meezan Beverages</h4><p class="text-xs text-red-500">@meezan</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"We needed robust tracking and ad management. The depth of analytics and proactive campaign tweaking provided here is top-tier."</p>
+                    </div>
                 </div>
-                
-                <!-- Card 2 -->
-                <div class="glass-panel p-10 flex flex-col items-center group">
-                    <div class="w-12 h-12 rounded-lg bg-[#0f172a] flex items-center justify-center border border-[#1e3a8a] mb-6 text-blue-500">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                 <div class="flex gap-6">
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">FH</div>
+                            <div><h4 class="font-bold text-white text-sm">Floret Herbal</h4><p class="text-xs text-red-500">@floretherbal</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched."</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Hardened Infrastructure</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-8">Our deployments feature deep structural security, including strict rules, sanitized web inputs, and robust domain protection.</p>
-                    <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="text-red-500 text-sm font-bold uppercase tracking-wider group-hover:text-red-400 transition flex items-center gap-2 mt-auto">Explore Service <span class="text-lg">→</span></a>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="glass-panel p-10 flex flex-col items-center group">
-                    <div class="w-12 h-12 rounded-lg bg-[#064e3b]/30 flex items-center justify-center border border-[#065f46] mb-6 text-emerald-500">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">ZU</div>
+                            <div><h4 class="font-bold text-white text-sm">Zeeshan Usmani</h4><p class="text-xs text-red-500">@zeeshanusmani</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Brilliant technical execution. Bridging the gap between raw marketing traffic generation and the actual backend infrastructure is rare."</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Gradual Permissions</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-8">We start our marketing and development processes with read-only permissions and safely expand access only as it proves its reliability.</p>
-                    <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="text-red-500 text-sm font-bold uppercase tracking-wider group-hover:text-red-400 transition flex items-center gap-2 mt-auto">Explore Service <span class="text-lg">→</span></a>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">HP</div>
+                            <div><h4 class="font-bold text-white text-sm">Healthy Planet</h4><p class="text-xs text-red-500">@healthyplanet</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Our Shopify architecture needed a massive overhaul. The execution was flawless, secure, and resulted in an immediate conversion lift."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">MB</div>
+                            <div><h4 class="font-bold text-white text-sm">Meezan Beverages</h4><p class="text-xs text-red-500">@meezan</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"We needed robust tracking and ad management. The depth of analytics and proactive campaign tweaking provided here is top-tier."</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. Wall of Love (Testimonials) -->
-    <section class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                Wall of Love
-            </div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-16">Built for Builders</h2>
-
-            <div class="grid md:grid-cols-3 gap-6 text-left">
-                <!-- Canada Cloud Solution -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-white font-bold text-sm">CC</div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4>
-                                <p class="text-xs text-red-500 font-medium">@canadacloud</p>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-blue-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">"We needed a custom integration done fast without breaking our existing stack. The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
-                </div>
-
-                <!-- Dastak Essentials (Highlighted) -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col h-full border-red-500/40 shadow-[0_0_30px_rgba(225,29,72,0.15)] relative overflow-hidden transform scale-105 z-10">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-red-400"></div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-900 to-black flex items-center justify-center text-white font-bold text-sm border border-red-500/30">DE</div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Dastak Essentials</h4>
-                                <p class="text-xs text-red-500 font-medium">@dastakessentials</p>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-blue-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
-                    <p class="text-sm text-gray-300 leading-relaxed font-light">"At this point I don't even know what to call this. It is something new. The combination of targeted digital marketing traffic wired directly into a high-converting Shopify backend completely changed our workflow. Incredible ROI."</p>
-                </div>
-
-                <!-- Go Boom Up Agency -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-white font-bold text-sm">GB</div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Go Boom Up Agency</h4>
-                                <p class="text-xs text-red-500 font-medium">@goboomup</p>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-blue-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">"Working across global time zones is usually a headache, but assigning infrastructure bottlenecks at the end of our day and waking up to finished deployments is a massive operational advantage for our agency."</p>
-                </div>
-
-                <!-- Xperts Hive -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-white font-bold text-sm">XH</div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Xperts Hive</h4>
-                                <p class="text-xs text-red-500 font-medium">@xpertshive</p>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-blue-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">"A true 'done-for-you' service. We handed over the digital marketing reins and web architecture duties, and the scaling happened exactly as mapped out on our kickoff call. Zero IT headaches on our end."</p>
-                </div>
-
-                <!-- Zeeshan Usmani -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-3">
-                            <img src="https://ui-avatars.com/api/?name=Zeeshan+Usmani&background=random&color=fff" alt="Avatar" class="w-10 h-10 rounded-full grayscale opacity-80">
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Zeeshan Usmani</h4>
-                                <p class="text-xs text-red-500 font-medium">@zeeshanusmani</p>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-blue-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">"Brilliant technical execution. Bridging the gap between raw marketing traffic generation and the actual backend infrastructure is rare to find. The proactive maintenance and security checks are top-tier."</p>
-                </div>
-
-                <!-- Floret Herbal -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-white font-bold text-sm">FH</div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Floret Herbal</h4>
-                                <p class="text-xs text-red-500 font-medium">@floretherbal</p>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-blue-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched. Getting everything set up and fine-tuned was completely painless."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Pricing Section -->
-    <section id="pricing" class="py-24 px-6 relative z-10 border-t border-white/5">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-16">Transparent Pricing</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Tier 1 -->
-                <div class="glass-panel p-10 text-left border border-white/10 flex flex-col">
-                    <h3 class="text-2xl font-bold mb-2">Strategy & Audit</h3>
-                    <p class="text-gray-400 text-sm mb-6">For brands needing immediate technical or marketing direction.</p>
-                    <div class="text-4xl font-extrabold mb-8">$50 <span class="text-lg text-gray-500 font-normal">/ call</span></div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 30-Minute Deep Dive</li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Traffic Funnel Audit</li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Shopify Architecture Review</li>
-                    </ul>
-                    <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="w-full py-4 glass-panel text-white font-bold text-center rounded-md hover:bg-white/10 transition">Book Now</a>
-                </div>
-
-                <!-- Tier 2 -->
-                <div class="glass-panel p-10 text-left border-red-500/50 shadow-[0_0_30px_rgba(225,29,72,0.1)] flex flex-col relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg uppercase tracking-wider">Most Popular</div>
-                    <h3 class="text-2xl font-bold mb-2">Done-For-You Deployment</h3>
-                    <p class="text-gray-400 text-sm mb-6">Full-scale digital marketing and web infrastructure build.</p>
-                    <div class="text-4xl font-extrabold mb-8">Custom <span class="text-lg text-gray-500 font-normal">/ project</span></div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Ad Campaign Management</li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Custom Shopify/Web Build</li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> AI Automations & Integrations</li>
-                    </ul>
-                    <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="w-full py-4 btn-primary text-white font-bold text-center rounded-md transition">Request Quote</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. FAQ Section -->
-    <section id="faq" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
+    <section id="faq" class="py-24 px-6 relative z-10 border-t border-white/5">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-                <p class="text-gray-400">Everything you need to know about the deployment process.</p>
+                <p class="text-gray-400">Clarity and transparency on the deployment process.</p>
             </div>
 
-            <div class="space-y-4">
+            <div class="space-y-3">
                 <details class="glass-panel p-6 group cursor-pointer">
                     <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
-                        How do your operating hours work?
+                        1. Why operate on US/UK hours from Pakistan?
                         <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">I am based in Pakistan (PKT) but operate strictly on US/UK business hours, typically working from 9 PM to 6 AM local time. This creates a massive advantage for my Western clients: you assign a task at the end of your workday, and it is completed by the time you wake up.</p>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">My standard shift is 9 PM to 6 AM PKT. This creates a massive operational advantage: you assign a task or campaign build at the end of your workday, and it is completed by the time you wake up.</p>
                 </details>
 
                 <details class="glass-panel p-6 group cursor-pointer">
                     <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
-                        What happens on the Discovery Call?
+                        2. How long until I see results from marketing?
                         <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">It is a 30-minute technical deep dive. We will audit your current digital marketing bottlenecks, look at your web architecture, and determine if my infrastructure solutions align with your revenue goals. No hard selling, just structural problem-solving.</p>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Infrastructure improvements (site speed, pixel setups) are immediate. Ad campaign optimization generally takes 14 days of data gathering before we scale budgets for maximum ROI.</p>
                 </details>
 
                 <details class="glass-panel p-6 group cursor-pointer">
                     <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
-                        Do you build custom web applications?
+                        3. Do you build custom sites or use templates?
                         <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Yes. Alongside my 5 years of digital marketing experience, my technical stack includes custom Web Development (HTML/Tailwind), headless Shopify architecture, Python integrations, and custom AI deployments via Microsoft Foundry.</p>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Both, depending on your budget. I specialize in custom HTML/Tailwind builds for speed, as well as highly optimized headless Shopify architectures.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        4. What happens on the Free Strategy Call?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">It is a 30-minute technical deep dive. We audit your current digital bottlenecks and determine if my solutions align with your revenue goals. No hard selling.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        5. How do you handle account security?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">I operate with strict separated access. I only request the precise permissions needed (e.g., Editor access on Shopify or Meta Ads) to ensure your master data remains secure.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        6. What ad platforms do you specialize in?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Over the last 5 years, I have specialized primarily in Meta (Facebook/Instagram) and Google Ads, focusing heavily on e-commerce conversion tracking.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        7. Do you work with existing Shopify stores?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Yes. We can audit and optimize an existing store, fixing broken integrations, speeding up load times, and improving the checkout funnel.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        8. Who owns the assets you build?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">You do. 100%. Everything built—from ad copy to custom code—is deployed directly onto your owned infrastructure.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        9. How is communication handled?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">We maintain asynchronous communication via email or Slack, with weekly or bi-weekly sync calls to review performance metrics.</p>
+                </details>
+
+                <details class="glass-panel p-6 group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center text-gray-200">
+                        10. What makes your approach different?
+                        <span class="text-red-500 group-open:rotate-45 transition-transform duration-300 text-2xl">+</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">I am not just a marketer; I am an architect. I don't just send traffic to a bad website. I fix the website, set up the tracking, and then run the ads. It is a complete ecosystem approach.</p>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- 9. Global Reach Grid -->
-    <section class="py-24 px-6 relative z-10 border-t border-white/5">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Global Reach
-            </div>
+    <section class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
+        <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-16">Available worldwide</h2>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-panel p-6 border-red-500/30 bg-[#1a0505]">
-                    <h3 class="font-bold text-lg mb-1 text-white">Lahore</h3>
-                    <div class="text-[10px] font-bold text-red-500 flex items-center justify-center gap-1 uppercase tracking-wider"><span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> In-Person & Remote</div>
-                </div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">London</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Austin</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">San Francisco</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Miami</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">New York City</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Seattle</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Denver</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Los Angeles</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Boston</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 hover:bg-white/5"><h3 class="font-bold text-lg mb-1">Chicago</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
-                <div class="glass-panel p-6 border border-dashed border-white/20"><h3 class="font-bold text-lg mb-1 text-gray-400 italic">Don't see your city?</h3><div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Remote</div></div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div class="glass-panel p-4 border-red-500/30 bg-[#1a0505]"><h3 class="font-bold text-sm mb-1 text-white">Lahore</h3><div class="text-[9px] font-bold text-red-500 uppercase">HQ / Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">New York</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">London</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Dubai</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Toronto</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Austin</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">San Francisco</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Miami</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Sydney</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Singapore</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Berlin</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Paris</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Melbourne</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Seattle</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Denver</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Los Angeles</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Boston</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Chicago</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4"><h3 class="font-bold text-sm mb-1">Amsterdam</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
+                <div class="glass-panel p-4 border border-dashed border-white/20"><h3 class="font-bold text-sm mb-1 text-gray-400">Other Cities</h3><div class="text-[9px] font-bold text-gray-500 uppercase">Remote</div></div>
             </div>
         </div>
     </section>
 
-    <!-- 10. Footer CTA & Links -->
     <footer class="py-20 px-6 border-t border-white/5 relative z-10 bg-[#050505]">
         <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
-            <h2 class="text-xl text-gray-300 font-medium mb-8">I deploy remotely worldwide. Don't see your city?<br>Book a call — I'm happy to help.</h2>
+            <h2 class="text-xl text-gray-300 font-medium mb-8">I deploy remotely worldwide.<br>Book a free audit to see if we are a fit.</h2>
             
             <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="px-8 py-4 rounded-full border border-white/10 hover:bg-white/10 transition text-sm font-bold shadow-lg mb-24">
-                Book a Call ($50)
+                Claim Free Strategy Call
             </a>
 
             <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10"></div>
@@ -547,7 +518,6 @@
                 <div class="text-lg text-gray-300">
                     Questions? <a href="https://cal.com/contact.faizanrana/discovery-call" target="_blank" class="text-red-500 font-bold hover:underline">Book a call</a> or email contact.faizanrana@gmail.com
                 </div>
-                
                 <div class="flex items-center gap-8">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/20 bg-green-500/5 text-green-400 text-xs font-bold uppercase tracking-wider">
                         <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -559,9 +529,8 @@
             <div class="w-full flex justify-between items-center text-sm text-gray-500 mt-8 font-medium">
                 <div>© 2026 Faizan Rana. All rights reserved.</div>
                 <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Affiliates</a>
+                    <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+                    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
                 </div>
             </div>
         </div>
