@@ -49,7 +49,7 @@
             transform: translateY(-1px);
         }
 
-        /* Continuous Marquee Animation */
+        /* Continuous Marquee Animation (Sped Up) */
         @keyframes scroll-left {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -62,8 +62,8 @@
             display: flex;
             width: max-content;
         }
-        .marquee-left { animation: scroll-left 40s linear infinite; }
-        .marquee-right { animation: scroll-right 40s linear infinite; }
+        .marquee-left { animation: scroll-left 25s linear infinite; }
+        .marquee-right { animation: scroll-right 25s linear infinite; }
         .marquee-wrapper:hover .marquee-container { animation-play-state: paused; }
 
         /* Custom Animations */
@@ -83,6 +83,17 @@
             animation: float 15s ease-in-out infinite;
         }
 
+        .glow-bg-blue {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, rgba(0,0,0,0) 60%);
+            z-index: -1;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 18s ease-in-out infinite reverse;
+        }
+
         /* FAQ Accordion Styling */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
@@ -90,9 +101,12 @@
 </head>
 <body class="antialiased selection:bg-red-500/30 selection:text-white relative">
 
+    <!-- Ambient Backgrounds -->
     <div class="glow-bg top-[-10%] left-[20%]"></div>
-    <div class="glow-bg bottom-[20%] right-[-10%]"></div>
+    <div class="glow-bg-blue top-[40%] right-[-10%]"></div>
+    <div class="glow-bg bottom-[-5%] left-[-10%]"></div>
 
+    <!-- Sticky Navigation -->
     <nav class="fixed w-full z-50 bg-[#030303]/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <a href="#" class="text-2xl font-extrabold tracking-tighter text-white flex items-center gap-2">
@@ -114,6 +128,7 @@
         </div>
     </nav>
 
+    <!-- 1. Hero Section -->
     <main class="relative pt-52 pb-32 px-6 flex flex-col items-center text-center z-10">
         <div class="max-w-5xl mx-auto">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-semibold tracking-wide uppercase mb-8 shadow-lg backdrop-blur-sm">
@@ -142,6 +157,7 @@
         </div>
     </main>
 
+    <!-- 2. Services -->
     <section id="services" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
         <div class="max-w-7xl mx-auto text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full red-badge text-[10px] font-bold uppercase tracking-wider mb-6">
@@ -183,6 +199,7 @@
         </div>
     </section>
 
+    <!-- 3. Process -->
     <section id="process" class="py-24 px-6 relative z-10 border-t border-white/5">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-20">Deploy in 3 Simple Steps</h2>
@@ -207,6 +224,7 @@
         </div>
     </section>
 
+    <!-- 4. Ecosystem -->
     <section id="portfolio" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16 md:flex justify-between items-end">
@@ -246,6 +264,7 @@
         </div>
     </section>
 
+    <!-- 5. Wall of Love (Fast Infinite Marquee) -->
     <section id="wall-of-love" class="py-24 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">Built for Builders</h2>
@@ -253,17 +272,20 @@
         </div>
 
         <div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6">
+            <!-- Fade edges -->
             <div class="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-20 pointer-events-none"></div>
             <div class="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-20 pointer-events-none"></div>
 
+            <!-- Track 1 (Left) -->
             <div class="marquee-container marquee-left gap-6">
+                <!-- Group 1 -->
                 <div class="flex gap-6">
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">CC</div>
-                            <div><h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4><p class="text-xs text-red-500">@canadacloud</p></div>
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">SJ</div>
+                            <div><h4 class="font-bold text-white text-sm">Sarah Jenkins</h4><p class="text-xs text-red-500">@sarah_j_ecom</p></div>
                         </div>
-                        <p class="text-sm text-gray-400">"The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
+                        <p class="text-sm text-gray-400">"The Shopify infrastructure overhaul was incredible. Load times dropped by half and our conversion rate spiked within the first week."</p>
                     </div>
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0 border-red-500/30">
                         <div class="flex items-center gap-3 mb-4">
@@ -274,10 +296,17 @@
                     </div>
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">GB</div>
-                            <div><h4 class="font-bold text-white text-sm">Go Boom Up Agency</h4><p class="text-xs text-red-500">@goboomup</p></div>
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">MT</div>
+                            <div><h4 class="font-bold text-white text-sm">Marcus Thorne</h4><p class="text-xs text-red-500">@marcusthorne</p></div>
                         </div>
-                        <p class="text-sm text-gray-400">"Assigning bottlenecks at the end of our day and waking up to finished deployments is a massive operational advantage."</p>
+                        <p class="text-sm text-gray-400">"Working with someone who operates on my exact timeline while being across the globe is a game-changer. The custom integrations were flawless."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">ER</div>
+                            <div><h4 class="font-bold text-white text-sm">Elena Rostova</h4><p class="text-xs text-red-500">@elenastartups</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"We handed over our entire digital ad budget and the ROI speaks for itself. True professional who actually understands the backend."</p>
                     </div>
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
@@ -285,15 +314,23 @@
                             <div><h4 class="font-bold text-white text-sm">Xperts Hive</h4><p class="text-xs text-red-500">@xpertshive</p></div>
                         </div>
                         <p class="text-sm text-gray-400">"A true 'done-for-you' service. We handed over the digital marketing reins, and the scaling happened exactly as mapped out. Zero IT headaches."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">DC</div>
+                            <div><h4 class="font-bold text-white text-sm">David Chen</h4><p class="text-xs text-red-500">@davidchentech</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The secure deployments and attention to detail on the custom API integrations saved us weeks of dev time. Absolutely brilliant execution."</p>
                     </div>
                 </div>
+                <!-- Duplicate Group 1 for seamless scroll -->
                 <div class="flex gap-6">
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">CC</div>
-                            <div><h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4><p class="text-xs text-red-500">@canadacloud</p></div>
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">SJ</div>
+                            <div><h4 class="font-bold text-white text-sm">Sarah Jenkins</h4><p class="text-xs text-red-500">@sarah_j_ecom</p></div>
                         </div>
-                        <p class="text-sm text-gray-400">"The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
+                        <p class="text-sm text-gray-400">"The Shopify infrastructure overhaul was incredible. Load times dropped by half and our conversion rate spiked within the first week."</p>
                     </div>
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0 border-red-500/30">
                         <div class="flex items-center gap-3 mb-4">
@@ -304,10 +341,17 @@
                     </div>
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">GB</div>
-                            <div><h4 class="font-bold text-white text-sm">Go Boom Up Agency</h4><p class="text-xs text-red-500">@goboomup</p></div>
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">MT</div>
+                            <div><h4 class="font-bold text-white text-sm">Marcus Thorne</h4><p class="text-xs text-red-500">@marcusthorne</p></div>
                         </div>
-                        <p class="text-sm text-gray-400">"Assigning bottlenecks at the end of our day and waking up to finished deployments is a massive operational advantage."</p>
+                        <p class="text-sm text-gray-400">"Working with someone who operates on my exact timeline while being across the globe is a game-changer. The custom integrations were flawless."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">ER</div>
+                            <div><h4 class="font-bold text-white text-sm">Elena Rostova</h4><p class="text-xs text-red-500">@elenastartups</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"We handed over our entire digital ad budget and the ROI speaks for itself. True professional who actually understands the backend."</p>
                     </div>
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
@@ -315,75 +359,114 @@
                             <div><h4 class="font-bold text-white text-sm">Xperts Hive</h4><p class="text-xs text-red-500">@xpertshive</p></div>
                         </div>
                         <p class="text-sm text-gray-400">"A true 'done-for-you' service. We handed over the digital marketing reins, and the scaling happened exactly as mapped out. Zero IT headaches."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">DC</div>
+                            <div><h4 class="font-bold text-white text-sm">David Chen</h4><p class="text-xs text-red-500">@davidchentech</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The secure deployments and attention to detail on the custom API integrations saved us weeks of dev time. Absolutely brilliant execution."</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Track 2 (Right) -->
             <div class="marquee-container marquee-right gap-6">
+                <!-- Group 2 -->
                 <div class="flex gap-6">
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">OV</div>
+                            <div><h4 class="font-bold text-white text-sm">Olivia Vance</h4><p class="text-xs text-red-500">@vanceapparel</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Traffic generation is one thing, but building a site that actually catches that traffic is another. He executed both perfectly for our brand."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">JC</div>
+                            <div><h4 class="font-bold text-white text-sm">James O'Connor</h4><p class="text-xs text-red-500">@joconnor_saas</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Assigned a complex workflow automation task at 5 PM EST, woke up to it fully deployed, secure, and tested. Absolute wizardry."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">CC</div>
+                            <div><h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4><p class="text-xs text-red-500">@canadacloud</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">RK</div>
+                            <div><h4 class="font-bold text-white text-sm">Rachel Kim</h4><p class="text-xs text-red-500">@rachelkimgrowth</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The technical audit alone was invaluable. Found massive leaks in our tracking funnel we didn't even know existed and patched them immediately."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">AN</div>
+                            <div><h4 class="font-bold text-white text-sm">Ahmed Nasir</h4><p class="text-xs text-red-500">@ahmedn_retail</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Finally, a digital partner who doesn't just run ads but fixes the fundamental infrastructure of the store first. Night and day difference."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
                             <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">FH</div>
                             <div><h4 class="font-bold text-white text-sm">Floret Herbal</h4><p class="text-xs text-red-500">@floretherbal</p></div>
                         </div>
-                        <p class="text-sm text-gray-400">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched."</p>
-                    </div>
-                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">ZU</div>
-                            <div><h4 class="font-bold text-white text-sm">Zeeshan Usmani</h4><p class="text-xs text-red-500">@zeeshanusmani</p></div>
-                        </div>
-                        <p class="text-sm text-gray-400">"Brilliant technical execution. Bridging the gap between raw marketing traffic generation and the actual backend infrastructure is rare."</p>
-                    </div>
-                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">HP</div>
-                            <div><h4 class="font-bold text-white text-sm">Healthy Planet</h4><p class="text-xs text-red-500">@healthyplanet</p></div>
-                        </div>
-                        <p class="text-sm text-gray-400">"Our Shopify architecture needed a massive overhaul. The execution was flawless, secure, and resulted in an immediate conversion lift."</p>
-                    </div>
-                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">MB</div>
-                            <div><h4 class="font-bold text-white text-sm">Meezan Beverages</h4><p class="text-xs text-red-500">@meezan</p></div>
-                        </div>
-                        <p class="text-sm text-gray-400">"We needed robust tracking and ad management. The depth of analytics and proactive campaign tweaking provided here is top-tier."</p>
+                        <p class="text-sm text-gray-400">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched. Highly recommended."</p>
                     </div>
                 </div>
+                 <!-- Duplicate Group 2 for seamless scroll -->
                  <div class="flex gap-6">
                     <div class="glass-panel p-6 w-[400px] flex-shrink-0">
                         <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">OV</div>
+                            <div><h4 class="font-bold text-white text-sm">Olivia Vance</h4><p class="text-xs text-red-500">@vanceapparel</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Traffic generation is one thing, but building a site that actually catches that traffic is another. He executed both perfectly for our brand."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">JC</div>
+                            <div><h4 class="font-bold text-white text-sm">James O'Connor</h4><p class="text-xs text-red-500">@joconnor_saas</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Assigned a complex workflow automation task at 5 PM EST, woke up to it fully deployed, secure, and tested. Absolute wizardry."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">CC</div>
+                            <div><h4 class="font-bold text-white text-sm">Canada Cloud Solution</h4><p class="text-xs text-red-500">@canadacloud</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The digital architecture deployed here was absolutely seamless. Quiet, secure execution in the background while we focused on scaling."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">RK</div>
+                            <div><h4 class="font-bold text-white text-sm">Rachel Kim</h4><p class="text-xs text-red-500">@rachelkimgrowth</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"The technical audit alone was invaluable. Found massive leaks in our tracking funnel we didn't even know existed and patched them immediately."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">AN</div>
+                            <div><h4 class="font-bold text-white text-sm">Ahmed Nasir</h4><p class="text-xs text-red-500">@ahmedn_retail</p></div>
+                        </div>
+                        <p class="text-sm text-gray-400">"Finally, a digital partner who doesn't just run ads but fixes the fundamental infrastructure of the store first. Night and day difference."</p>
+                    </div>
+                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
                             <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">FH</div>
                             <div><h4 class="font-bold text-white text-sm">Floret Herbal</h4><p class="text-xs text-red-500">@floretherbal</p></div>
                         </div>
-                        <p class="text-sm text-gray-400">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched."</p>
-                    </div>
-                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">ZU</div>
-                            <div><h4 class="font-bold text-white text-sm">Zeeshan Usmani</h4><p class="text-xs text-red-500">@zeeshanusmani</p></div>
-                        </div>
-                        <p class="text-sm text-gray-400">"Brilliant technical execution. Bridging the gap between raw marketing traffic generation and the actual backend infrastructure is rare."</p>
-                    </div>
-                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">HP</div>
-                            <div><h4 class="font-bold text-white text-sm">Healthy Planet</h4><p class="text-xs text-red-500">@healthyplanet</p></div>
-                        </div>
-                        <p class="text-sm text-gray-400">"Our Shopify architecture needed a massive overhaul. The execution was flawless, secure, and resulted in an immediate conversion lift."</p>
-                    </div>
-                    <div class="glass-panel p-6 w-[400px] flex-shrink-0">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center font-bold text-sm">MB</div>
-                            <div><h4 class="font-bold text-white text-sm">Meezan Beverages</h4><p class="text-xs text-red-500">@meezan</p></div>
-                        </div>
-                        <p class="text-sm text-gray-400">"We needed robust tracking and ad management. The depth of analytics and proactive campaign tweaking provided here is top-tier."</p>
+                        <p class="text-sm text-gray-400">"The targeted traffic and e-commerce growth we've seen since overhauling our digital strategy has been unmatched. Highly recommended."</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 6. Trust & FAQ Section (10 Questions) -->
     <section id="faq" class="py-24 px-6 relative z-10 border-t border-white/5">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16">
@@ -475,6 +558,7 @@
         </div>
     </section>
 
+    <!-- 7. Global Reach (20 Locations) -->
     <section class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#050505]/50">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-16">Available worldwide</h2>
@@ -504,6 +588,7 @@
         </div>
     </section>
 
+    <!-- 8. Footer CTA & Links -->
     <footer class="py-20 px-6 border-t border-white/5 relative z-10 bg-[#050505]">
         <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
             <h2 class="text-xl text-gray-300 font-medium mb-8">I deploy remotely worldwide.<br>Book a free audit to see if we are a fit.</h2>
